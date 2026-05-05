@@ -1,4 +1,4 @@
-# 🎯 Decision Simulator
+# Decision Simulator
 
 > See your future before you live it.
 
@@ -8,7 +8,7 @@ A modern, AI-powered web app that simulates best-case, worst-case, and wildcard 
 
 ---
 
-## 🚀 Live Features
+## Live Features
 
 - **Three timelines** — Best, Worst, and Wildcard outcomes for every decision
 - **Roast Mode** — Toggle for extra sass and sarcasm
@@ -19,7 +19,7 @@ A modern, AI-powered web app that simulates best-case, worst-case, and wildcard 
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 | Layer | Tech |
 |---|---|
@@ -32,7 +32,7 @@ A modern, AI-powered web app that simulates best-case, worst-case, and wildcard 
 
 ---
 
-## 📦 Installation
+## Installation
 
 ### Clone & Setup
 
@@ -67,7 +67,7 @@ npm run dev
 
 ---
 
-## 🔌 API
+## API
 
 ### `POST /api/simulate`
 
