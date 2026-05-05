@@ -182,7 +182,7 @@ export function SinglePageSimulator() {
             </div>
           </div>
 
-          <div className="mt-8 grid gap-5 md:gap-6 md:grid-cols-2 lg:grid-cols-[1.2fr_0.8fr] items-start">
+          <div className="mt-8 grid grid-cols-1 gap-5 md:gap-6 md:grid-cols-2 lg:grid-cols-[1.2fr_0.8fr] items-start">
             {/* Input card */}
             <div className="pointer-events-auto">
               <div className="bg-white/15 backdrop-blur-md border border-white/30 rounded-[1.5rem] sm:rounded-[2rem] p-3 sm:p-5 sm:p-6 shadow-2xl">
@@ -281,9 +281,9 @@ export function SinglePageSimulator() {
                   <div className="text-xs font-semibold tracking-wide text-white/75">
                     Category: {result.category} {result.provider ? `• via ${result.provider}` : ""}
                   </div>
-                  <div className="mt-2 text-2xl sm:text-3xl font-black tracking-tight">
-                    “{decision.trim()}”
-                  </div>
+                   <div className="mt-2 text-2xl sm:text-3xl font-black tracking-tight break-words">
+                     “{decision.trim()}”
+                   </div>
                 </div>
                 <button
                   type="button"
@@ -297,7 +297,7 @@ export function SinglePageSimulator() {
                 </button>
               </div>
 
-              <div className="grid gap-4 lg:grid-cols-3">
+               <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
                 <TimelineCard
                   label="Best Case"
                   accent="emerald"
@@ -327,7 +327,7 @@ export function SinglePageSimulator() {
                 />
               </div>
 
-              <div className="mt-4 grid gap-4 lg:grid-cols-2">
+               <div className="mt-4 grid grid-cols-1 gap-4 lg:grid-cols-2">
                 <ConfidenceMeter percent={result.confidence_percent} label={confidenceLabel} />
                 <ShareCard
                   data={{

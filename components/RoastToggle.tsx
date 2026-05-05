@@ -29,8 +29,8 @@ export function RoastToggle(props: {
       >
         <span
           className={[
-            "absolute top-0.5 h-6 w-6 rounded-full bg-white shadow transition-transform duration-300",
-            props.value ? "translate-x-5" : "translate-x-0.5",
+            "absolute left-0 top-0.5 h-6 w-6 rounded-full bg-white shadow transition-transform duration-300",
+            props.value ? "translate-x-5" : "translate-x-0",
           ].join(" ")}
         />
       </button>
