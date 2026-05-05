@@ -19,22 +19,21 @@ export function ShareCard(props: { data: ShareData }) {
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  // Tailwind v4 uses modern color functions (oklch/lab) which html2canvas can't parse reliably.
-  // For export, we render the share preview with plain hex/rgb colors via inline styles.
+  // Light theme for export and preview (glassmorphism)
   const exportColors = {
-    bgTopLeft: "#0A0A0A",
-    bgMid: "#101015",
-    bgBottomRight: "#050508",
-    text: "#FFFFFF",
-    muted: "rgba(255,255,255,0.72)",
-    muted2: "rgba(255,255,255,0.55)",
-    pillBg: "rgba(255,255,255,0.10)",
-    bestBorder: "rgba(52, 211, 153, 0.35)",
-    bestBg: "rgba(52, 211, 153, 0.10)",
-    worstBorder: "rgba(251, 113, 133, 0.35)",
-    worstBg: "rgba(251, 113, 133, 0.10)",
-    wildBorder: "rgba(167, 139, 250, 0.35)",
-    wildBg: "rgba(167, 139, 250, 0.10)",
+    bgTopLeft: "rgba(255, 255, 255, 0.9)",
+    bgMid: "rgba(255, 255, 255, 0.85)",
+    bgBottomRight: "rgba(255, 255, 255, 0.95)",
+    text: "#000000",
+    muted: "rgba(0,0,0,0.6)",
+    muted2: "rgba(0,0,0,0.4)",
+    pillBg: "rgba(0,0,0,0.08)",
+    bestBorder: "rgba(52, 211, 153, 0.5)",
+    bestBg: "rgba(52, 211, 153, 0.15)",
+    worstBorder: "rgba(251, 113, 133, 0.5)",
+    worstBg: "rgba(251, 113, 133, 0.15)",
+    wildBorder: "rgba(167, 139, 250, 0.5)",
+    wildBg: "rgba(167, 139, 250, 0.15)",
   } as const;
 
   async function exportImage() {
@@ -43,7 +42,7 @@ export function ShareCard(props: { data: ShareData }) {
     setBusy(true);
     try {
       const canvas = await html2canvas(ref.current, {
-        backgroundColor: "#0a0a0a",
+        backgroundColor: "#ffffff",
         scale: 2,
         useCORS: true,
       });
@@ -62,28 +61,28 @@ export function ShareCard(props: { data: ShareData }) {
   const { data } = props;
 
   return (
-    <div className="rounded-[2rem] border border-white/30 bg-white/10 backdrop-blur-md p-5 shadow-sm">
+    <div className="rounded-[2rem] border border-black/15 bg-white/70 backdrop-blur-md p-5 shadow-sm">
       <div className="flex items-center justify-between gap-3">
         <div>
-          <div className="text-sm font-semibold tracking-wide text-white/90">
+          <div className="text-sm font-semibold tracking-wide text-black">
             Share card
           </div>
-          <div className="mt-1 text-xs text-white/70">
-            Exports a square image (with watermark).
+          <div className="mt-1 text-xs text-black/60">
+            Exports a light glassmorphism image (with watermark).
           </div>
         </div>
         <button
           type="button"
           onClick={exportImage}
           disabled={busy}
-          className="inline-flex items-center justify-center rounded-full border-2 border-white bg-white text-[#0038FF] px-4 py-2 text-sm font-semibold hover:bg-white/90 disabled:opacity-60 transition-all duration-300 shadow-lg hover:shadow-xl"
+          className="inline-flex items-center justify-center rounded-full border-2 border-black bg-black text-white px-4 py-2 text-sm font-semibold hover:bg-black/90 disabled:opacity-60 transition-all duration-300 shadow-lg hover:shadow-xl"
         >
           {busy ? "Exporting..." : "Export image"}
         </button>
       </div>
 
       {error ? (
-        <div className="mt-3 rounded-2xl border border-rose-200/40 bg-rose-500/15 px-4 py-3 text-sm text-rose-50">
+        <div className="mt-3 rounded-2xl border border-rose-600/40 bg-rose-500/20 px-4 py-3 text-sm text-rose-900">
           {error}
         </div>
       ) : null}
@@ -91,7 +90,7 @@ export function ShareCard(props: { data: ShareData }) {
       <div className="mt-4 flex justify-center">
         <div
           ref={ref}
-          className="w-[720px] max-w-full overflow-hidden rounded-[2rem] border border-white/30 bg-white/10 backdrop-blur-md p-6 shadow-sm"
+          className="w-[720px] max-w-full overflow-hidden rounded-[2rem] border border-black/10 bg-white/90 backdrop-blur-md p-6 shadow-lg"
           style={{
             color: exportColors.text,
             backgroundImage: `linear-gradient(135deg, ${exportColors.bgTopLeft}, ${exportColors.bgMid}, ${exportColors.bgBottomRight})`,
@@ -105,7 +104,7 @@ export function ShareCard(props: { data: ShareData }) {
               >
                 Decision Simulator
               </div>
-              <div className="mt-2 text-lg font-semibold leading-snug text-white">
+              <div className="mt-2 text-lg font-semibold leading-snug text-black">
                 “{data.decision}”
               </div>
               <div className="mt-2 text-xs" style={{ color: exportColors.muted }}>
@@ -150,9 +149,8 @@ export function ShareCard(props: { data: ShareData }) {
                   >
                     {label}
                   </div>
-                  <div className="text-lg">{t.vibe}</div>
                 </div>
-                <div className="mt-2 text-sm font-semibold text-white">{t.title}</div>
+                <div className="mt-2 text-sm font-semibold text-black">{t.title}</div>
                 <div className="mt-2 text-xs" style={{ color: exportColors.muted }}>
                   {t.verdict}
                 </div>

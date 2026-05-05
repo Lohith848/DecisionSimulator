@@ -9,7 +9,6 @@ export function TimelineCard(props: {
   threeMonth: string;
   oneYear: string;
   verdict: string;
-  vibe: string;
   delay?: number;
 }) {
   const accentClasses =
@@ -19,29 +18,28 @@ export function TimelineCard(props: {
         ? "from-rose-500/20 to-rose-500/0 border-rose-300/40 dark:border-rose-400/30"
         : "from-violet-500/20 to-violet-500/0 border-violet-300/40 dark:border-violet-400/30";
 
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 10 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.35, delay: props.delay ?? 0 }}
-      className={[
-        "relative overflow-hidden rounded-[2rem] border bg-white/10 backdrop-blur-md shadow-sm",
-        accentClasses,
-      ].join(" ")}
-    >
-      <div className="absolute inset-0 bg-gradient-to-b opacity-100" />
-      <div className="relative p-5">
-        <div className="flex items-start justify-between gap-3">
-          <div>
-            <div className="text-xs font-semibold tracking-wide text-white/80">
-              {props.label}
-            </div>
-            <div className="mt-1 text-xl font-semibold tracking-tight text-white">
-              {props.title}
-            </div>
-          </div>
-          <div className="text-2xl">{props.vibe}</div>
-        </div>
+   return (
+     <motion.div
+       initial={{ opacity: 0, y: 10 }}
+       animate={{ opacity: 1, y: 0 }}
+       transition={{ duration: 0.35, delay: props.delay ?? 0 }}
+       className={[
+         "relative overflow-hidden rounded-[2rem] border bg-white/10 backdrop-blur-md shadow-sm",
+         accentClasses,
+       ].join(" ")}
+     >
+       <div className="absolute inset-0 bg-gradient-to-b opacity-100" />
+       <div className="relative p-5">
+         <div className="flex items-start justify-between gap-3">
+           <div>
+             <div className="text-xs font-semibold tracking-wide text-white/80">
+               {props.label}
+             </div>
+             <div className="mt-1 text-xl font-semibold tracking-tight text-white">
+               {props.title}
+             </div>
+           </div>
+         </div>
 
         <div className="mt-4 space-y-3 text-sm text-white/90">
           <div>

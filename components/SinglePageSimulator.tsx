@@ -127,8 +127,8 @@ export function SinglePageSimulator() {
       {/* Background Grid */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff18_1px,transparent_1px),linear-gradient(to_bottom,#ffffff18_1px,transparent_1px)] bg-[size:4rem_4rem] pointer-events-none z-0" />
 
-      {/* Top bar */}
-      <header className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 py-6 flex items-center justify-between gap-4">
+       {/* Top bar */}
+      <header className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 py-4 sm:py-6 flex items-center justify-between gap-4">
         <div className="flex items-center gap-2">
           <div className="bg-white text-black font-black tracking-tight text-xs sm:text-sm px-3 py-1.5 rounded-2xl rounded-bl-sm relative shadow-sm">
             DECISION
@@ -182,7 +182,7 @@ export function SinglePageSimulator() {
             </div>
           </div>
 
-          <div className="mt-10 grid gap-6 lg:grid-cols-[1.2fr_0.8fr] items-start">
+          <div className="mt-8 grid gap-5 md:gap-6 md:grid-cols-2 lg:grid-cols-[1.2fr_0.8fr] items-start">
             {/* Input card */}
             <div className="pointer-events-auto">
               <div className="bg-white/15 backdrop-blur-md border border-white/30 rounded-[2rem] p-5 sm:p-6 shadow-2xl">
@@ -305,7 +305,6 @@ export function SinglePageSimulator() {
                   threeMonth={result.timelines.best.three_month}
                   oneYear={result.timelines.best.one_year}
                   verdict={result.timelines.best.verdict}
-                  vibe={result.timelines.best.vibe}
                   delay={0.02}
                 />
                 <TimelineCard
@@ -315,7 +314,6 @@ export function SinglePageSimulator() {
                   threeMonth={result.timelines.worst.three_month}
                   oneYear={result.timelines.worst.one_year}
                   verdict={result.timelines.worst.verdict}
-                  vibe={result.timelines.worst.vibe}
                   delay={0.06}
                 />
                 <TimelineCard
@@ -325,7 +323,6 @@ export function SinglePageSimulator() {
                   threeMonth={result.timelines.wildcard.three_month}
                   oneYear={result.timelines.wildcard.one_year}
                   verdict={result.timelines.wildcard.verdict}
-                  vibe={result.timelines.wildcard.vibe}
                   delay={0.1}
                 />
               </div>
