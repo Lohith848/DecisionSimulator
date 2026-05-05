@@ -10,7 +10,7 @@ export function RoastToggle(props: {
   return (
     <label
       htmlFor={id}
-      className="inline-flex items-center gap-3 select-none text-white"
+      className="inline-flex items-center gap-3 select-none text-white cursor-pointer"
     >
       <span className="text-sm font-medium">
         Roast mode

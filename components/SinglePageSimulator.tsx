@@ -128,27 +128,27 @@ export function SinglePageSimulator() {
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff18_1px,transparent_1px),linear-gradient(to_bottom,#ffffff18_1px,transparent_1px)] bg-[size:4rem_4rem] pointer-events-none z-0" />
 
        {/* Top bar */}
-      <header className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 py-4 sm:py-6 flex items-center justify-between gap-4">
-        <div className="flex items-center gap-2">
-          <div className="bg-white text-black font-black tracking-tight text-xs sm:text-sm px-3 py-1.5 rounded-2xl rounded-bl-sm relative shadow-sm">
+      <header className="relative z-10 max-w-6xl mx-auto px-3 sm:px-6 py-3 sm:py-6 flex items-center justify-between gap-2 sm:gap-4">
+        <div className="flex items-center gap-1 sm:gap-2">
+          <div className="bg-white text-black font-black tracking-tight text-[10px] sm:text-xs px-2 py-1 sm:px-3 sm:py-1.5 rounded-xl sm:rounded-2xl rounded-bl-sm relative shadow-sm">
             DECISION
             <div
-              className="absolute -bottom-1.5 left-0 w-3 h-3 bg-white"
+              className="absolute -bottom-1 sm:-bottom-1.5 left-0 w-2 sm:w-3 h-2 sm:h-3 bg-white"
               style={{ clipPath: "polygon(0 0, 100% 0, 0 100%)" }}
             />
           </div>
-          <div className="bg-[#CCFF00] text-black font-black text-xs sm:text-sm px-3 py-1.5 rounded-full border-[1.5px] border-white shadow-sm">
+          <div className="bg-[#CCFF00] text-black font-black text-[10px] sm:text-xs px-2 py-1 sm:px-3 sm:py-1.5 rounded-full border-[1.5px] border-white shadow-sm">
             SIM
           </div>
         </div>
-        <div className="text-white">
+        <div className="text-white text-sm">
           <RoastToggle value={roastMode} onChange={setRoastMode} />
         </div>
       </header>
 
       {/* Hero / input */}
-      <main className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 pb-14">
-        <div className="relative max-w-5xl mx-auto text-center pt-6 pb-10">
+      <main className="relative z-10 max-w-6xl mx-auto px-3 sm:px-6 pb-10 sm:pb-14">
+        <div className="relative max-w-5xl mx-auto text-center pt-4 sm:pt-6 pb-8 sm:pb-10 px-2 sm:px-0">
           <h1
             className="text-[clamp(3.5rem,10vw,140px)] font-black leading-[0.85] tracking-tighter text-white uppercase"
             style={{
@@ -185,17 +185,17 @@ export function SinglePageSimulator() {
           <div className="mt-8 grid gap-5 md:gap-6 md:grid-cols-2 lg:grid-cols-[1.2fr_0.8fr] items-start">
             {/* Input card */}
             <div className="pointer-events-auto">
-              <div className="bg-white/15 backdrop-blur-md border border-white/30 rounded-[2rem] p-5 sm:p-6 shadow-2xl">
-                <div className="flex items-start justify-between gap-4">
+              <div className="bg-white/15 backdrop-blur-md border border-white/30 rounded-[1.5rem] sm:rounded-[2rem] p-3 sm:p-5 sm:p-6 shadow-2xl">
+                <div className="flex items-start justify-between gap-2 sm:gap-4">
                   <div className="text-left">
-                    <div className="text-xs font-semibold tracking-wide text-black/70">
+                    <div className="text-[11px] sm:text-xs font-semibold tracking-wide text-black/70">
                       Type your decision
                     </div>
-                    <div className="mt-1 text-sm text-black/80">
+                    <div className="mt-0.5 sm:mt-1 text-[11px] sm:text-sm text-black/80">
                       You'll get Best, Worst, and Wildcard timelines.
                     </div>
                   </div>
-                  <div className="text-xs font-black text-black bg-[#CCFF00] px-3 py-1.5 rounded-full">
+                  <div className="text-[10px] sm:text-xs font-black text-black bg-[#CCFF00] px-2 py-1 sm:px-3 sm:py-1.5 rounded-full">
                     {roastMode ? "ROAST: ON" : "ROAST: OFF"}
                   </div>
                 </div>
@@ -203,34 +203,34 @@ export function SinglePageSimulator() {
                 <textarea
                   value={decision}
                   onChange={(e) => setDecision(e.target.value)}
-                  rows={5}
+                  rows={4}
                   placeholder='Example: "Should I text my ex at 2am?"'
-                  className="mt-4 w-full resize-none rounded-2xl border border-black/20 bg-white/80 px-4 py-3 text-base text-black placeholder:text-black/50 outline-none focus:border-black/40"
+                  className="mt-3 sm:mt-4 w-full resize-none rounded-xl sm:rounded-2xl border border-black/20 bg-white/80 px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base text-black placeholder:text-black/50 outline-none focus:border-black/40"
                   disabled={loading}
                 />
 
-                <div className="mt-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-                  <div className="text-xs text-black/70">
+                <div className="mt-3 sm:mt-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-3">
+                  <div className="text-[11px] sm:text-xs text-black/70">
                     Simulation ≠ prediction. But it might be a warning.
                   </div>
                   <button
                     type="button"
                     onClick={simulate}
                     disabled={loading}
-                    className="inline-flex items-center justify-center rounded-full border-2 border-white bg-white text-[#0038FF] px-6 py-3 text-sm font-semibold hover:scale-[1.02] hover:bg-white/90 disabled:opacity-60 disabled:hover:scale-100 transition-all duration-300 ease-out shadow-lg hover:shadow-xl"
+                    className="inline-flex items-center justify-center rounded-full border-2 border-white bg-white text-[#0038FF] px-4 sm:px-6 py-2 sm:py-3 text-xs sm:text-sm font-semibold hover:scale-[1.02] hover:bg-white/90 disabled:opacity-60 disabled:hover:scale-100 transition-all duration-300 ease-out shadow-lg hover:shadow-xl"
                   >
                     {loading ? "Simulating..." : "Simulate My Future"}
                   </button>
                 </div>
 
                 {loading ? (
-                  <div className="mt-4 rounded-2xl border border-white/20 bg-black/15 px-4 py-3 text-sm text-white/85">
+                  <div className="mt-3 sm:mt-4 rounded-2xl border border-white/20 bg-black/15 px-3 sm:px-4 py-2 sm:py-3 text-xs sm:text-sm text-white/85">
                     {loadingLine}
                   </div>
                 ) : null}
 
                 {error ? (
-                  <div className="mt-4 rounded-2xl border border-rose-200/40 bg-rose-500/15 px-4 py-3 text-sm text-rose-50">
+                  <div className="mt-3 sm:mt-4 rounded-2xl border border-rose-200/40 bg-rose-500/15 px-3 sm:px-4 py-2 sm:py-3 text-xs sm:text-sm text-rose-50">
                     {error}
                   </div>
                 ) : null}
@@ -244,16 +244,16 @@ export function SinglePageSimulator() {
               transition={{ duration: 0.35 }}
               className="pointer-events-auto"
             >
-              <div className="bg-white rounded-[2rem] p-5 sm:p-6 text-black shadow-[0_30px_80px_rgba(0,0,0,0.35)]">
-                <div className="text-xl font-black uppercase leading-tight">
+              <div className="bg-white rounded-[1.5rem] sm:rounded-[2rem] p-3 sm:p-5 sm:p-6 text-black shadow-[0_20px_40px_rgba(0,0,0,0.25)] sm:shadow-[0_30px_80px_rgba(0,0,0,0.35)]">
+                <div className="text-lg sm:text-xl font-black uppercase leading-tight">
                   Three timelines.
                   <br />
                   One decision.
                 </div>
-                <div className="mt-2 text-xs font-bold text-black/60">
+                <div className="mt-1 sm:mt-2 text-[11px] sm:text-xs font-bold text-black/60">
                   Best Case • Worst Case • Wildcard
                 </div>
-                <div className="mt-5">
+                <div className="mt-3 sm:mt-5">
                   <HistoryDrawerNoSSR
                     items={history}
                     onPick={(item: HistoryItem) => {
