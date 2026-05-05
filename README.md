@@ -211,7 +211,7 @@ Built with Next.js, Tailwind CSS, Framer Motion, Groq, and Google Gemini.
 
 ## 🔗 Links
 
-- [Live Demo](https://decisionsimulator.app)
+- [Check out](https://use-decision-simulator.vercel.app/)
 - [Issues](https://github.com/Lohith848/DecisionSimulator/issues)
 - [Pull Requests](https://github.com/Lohith848/DecisionSimulator/pulls)
 
