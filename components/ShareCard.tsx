@@ -8,9 +8,9 @@ type ShareData = {
   category: string;
   confidence_percent: number;
   timelines: {
-    best: { title: string; verdict: string; vibe: string };
-    worst: { title: string; verdict: string; vibe: string };
-    wildcard: { title: string; verdict: string; vibe: string };
+    best: { title: string; verdict: string };
+    worst: { title: string; verdict: string };
+    wildcard: { title: string; verdict: string };
   };
 };
 
@@ -19,7 +19,7 @@ export function ShareCard(props: { data: ShareData }) {
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  // Light theme for export and preview (glassmorphism)
+  // Light theme colors - all rgba/hex for html2canvas compatibility
   const exportColors = {
     bgTopLeft: "rgba(255, 255, 255, 0.9)",
     bgMid: "rgba(255, 255, 255, 0.85)",
@@ -36,7 +36,7 @@ export function ShareCard(props: { data: ShareData }) {
     wildBg: "rgba(167, 139, 250, 0.15)",
   } as const;
 
-   async function exportImage() {
+  async function exportImage() {
     setError(null);
     if (!ref.current) return;
     setBusy(true);
@@ -45,10 +45,8 @@ export function ShareCard(props: { data: ShareData }) {
         backgroundColor: "#ffffff",
         scale: 2,
         useCORS: true,
-        ignoreElements: (el) => {
-          // Ignore elements with data-html2canvas-ignore or their ancestors
-          return el.hasAttribute('data-html2canvas-ignore') || !!el.closest('[data-html2canvas-ignore]');
-        },
+        ignoreElements: (el) =>
+          el.hasAttribute('data-html2canvas-ignore') || !!el.closest('[data-html2canvas-ignore]'),
         logging: false,
       });
       const url = canvas.toDataURL("image/png");
@@ -66,13 +64,19 @@ export function ShareCard(props: { data: ShareData }) {
   const { data } = props;
 
   return (
-    <div className="rounded-[2rem] border-[1px] border-[rgba(0,0,0,0.15)] bg-white/70 backdrop-blur-sm p-5 shadow-sm">
+    <div
+      className="rounded-[2rem] p-5 shadow-sm"
+      style={{
+        border: "1px solid rgba(0,0,0,0.15)",
+        backgroundColor: "rgba(255,255,255,0.7)",
+      }}
+    >
       <div className="flex items-center justify-between gap-3">
         <div>
-          <div className="text-sm font-semibold tracking-wide text-black">
+          <div className="text-sm font-semibold tracking-wide" style={{ color: "rgb(0,0,0)" }}>
             Share card
           </div>
-          <div className="mt-1 text-xs text-black/60">
+          <div className="mt-1 text-xs" style={{ color: "rgba(0,0,0,0.6)" }}>
             Exports a light glassmorphism image (with watermark).
           </div>
         </div>
@@ -87,7 +91,14 @@ export function ShareCard(props: { data: ShareData }) {
       </div>
 
       {error ? (
-        <div className="mt-3 rounded-2xl border border-rose-600/40 bg-rose-500/20 px-4 py-3 text-sm text-rose-900">
+        <div
+          className="mt-3 rounded-2xl p-4 text-sm"
+          style={{
+            border: "1px solid rgba(251, 113, 133, 0.4)",
+            backgroundColor: "rgba(251, 113, 133, 0.2)",
+            color: "#7f1d1d",
+          }}
+        >
           {error}
         </div>
       ) : null}
@@ -95,9 +106,11 @@ export function ShareCard(props: { data: ShareData }) {
       <div className="mt-4 flex justify-center">
         <div
           ref={ref}
-          className="w-[720px] max-w-full overflow-hidden rounded-[2rem] border-[1px] border-[rgba(0,0,0,0.1)] bg-white/90 backdrop-blur-md p-6 shadow-lg"
+          className="w-[720px] max-w-full overflow-hidden rounded-[2rem] p-6 shadow-lg"
           style={{
             color: exportColors.text,
+            backgroundColor: "#ffffff",
+            border: "1px solid rgba(0,0,0,0.1)",
             backgroundImage: `linear-gradient(135deg, ${exportColors.bgTopLeft}, ${exportColors.bgMid}, ${exportColors.bgBottomRight})`,
           }}
         >
@@ -109,7 +122,7 @@ export function ShareCard(props: { data: ShareData }) {
               >
                 Decision Simulator
               </div>
-              <div className="mt-2 text-lg font-semibold leading-snug text-black">
+              <div className="mt-2 text-lg font-semibold leading-snug" style={{ color: "rgb(0,0,0)" }}>
                 “{data.decision}”
               </div>
               <div className="mt-2 text-xs" style={{ color: exportColors.muted }}>
@@ -129,33 +142,26 @@ export function ShareCard(props: { data: ShareData }) {
           <div className="mt-6 grid gap-3 md:grid-cols-3">
             {(
               [
-                [
-                  "Best",
-                  data.timelines.best,
-                  { borderColor: exportColors.bestBorder, backgroundColor: exportColors.bestBg },
-                ] as const,
-                [
-                  "Worst",
-                  data.timelines.worst,
-                  { borderColor: exportColors.worstBorder, backgroundColor: exportColors.worstBg },
-                ] as const,
-                [
-                  "Wildcard",
-                  data.timelines.wildcard,
-                  { borderColor: exportColors.wildBorder, backgroundColor: exportColors.wildBg },
-                ] as const,
+                ["Best", data.timelines.best, { borderColor: exportColors.bestBorder, backgroundColor: exportColors.bestBg }] as const,
+                ["Worst", data.timelines.worst, { borderColor: exportColors.worstBorder, backgroundColor: exportColors.worstBg }] as const,
+                ["Wildcard", data.timelines.wildcard, { borderColor: exportColors.wildBorder, backgroundColor: exportColors.wildBg }] as const,
               ] as const
             ).map(([label, t, style]) => (
-              <div key={label} className="rounded-2xl border p-4" style={style}>
-                <div className="flex items-start justify-between gap-2">
-                  <div
-                    className="text-xs font-semibold tracking-wide"
-                    style={{ color: exportColors.muted }}
-                  >
-                    {label}
-                  </div>
+              <div
+                key={label}
+                className="rounded-2xl p-4"
+                style={{
+                  border: `1px solid ${style.borderColor}`,
+                  backgroundColor: style.backgroundColor,
+                }}
+              >
+                <div
+                  className="text-xs font-semibold tracking-wide"
+                  style={{ color: exportColors.muted }}
+                >
+                  {label}
                 </div>
-                <div className="mt-2 text-sm font-semibold text-black">{t.title}</div>
+                <div className="mt-2 text-sm font-semibold" style={{ color: "rgb(0,0,0)" }}>{t.title}</div>
                 <div className="mt-2 text-xs" style={{ color: exportColors.muted }}>
                   {t.verdict}
                 </div>
@@ -171,4 +177,3 @@ export function ShareCard(props: { data: ShareData }) {
     </div>
   );
 }
-

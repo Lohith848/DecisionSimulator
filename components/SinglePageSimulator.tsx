@@ -332,30 +332,27 @@ export function SinglePageSimulator() {
 
                <div className="mt-4 grid grid-cols-1 gap-4 lg:grid-cols-2">
                 <ConfidenceMeter percent={result.confidence_percent} label={confidenceLabel} />
-                <ShareCard
-                  data={{
-                    decision: decision.trim(),
-                    category: result.category,
-                    confidence_percent: result.confidence_percent,
-                    timelines: {
-                      best: {
-                        title: result.timelines.best.title,
-                        verdict: result.timelines.best.verdict,
-                        vibe: result.timelines.best.vibe,
-                      },
-                      worst: {
-                        title: result.timelines.worst.title,
-                        verdict: result.timelines.worst.verdict,
-                        vibe: result.timelines.worst.vibe,
-                      },
-                      wildcard: {
-                        title: result.timelines.wildcard.title,
-                        verdict: result.timelines.wildcard.verdict,
-                        vibe: result.timelines.wildcard.vibe,
-                      },
-                    },
-                  }}
-                />
+                 <ShareCard
+                   data={{
+                     decision: decision.trim(),
+                     category: result.category,
+                     confidence_percent: result.confidence_percent,
+                     timelines: {
+                       best: {
+                         title: result.timelines.best.title,
+                         verdict: result.timelines.best.verdict,
+                       },
+                       worst: {
+                         title: result.timelines.worst.title,
+                         verdict: result.timelines.worst.verdict,
+                       },
+                       wildcard: {
+                         title: result.timelines.wildcard.title,
+                         verdict: result.timelines.wildcard.verdict,
+                       },
+                     },
+                   }}
+                 />
               </div>
             </div>
           </section>
