@@ -36,7 +36,7 @@ export function ShareCard(props: { data: ShareData }) {
     wildBg: "rgba(167, 139, 250, 0.15)",
   } as const;
 
-  async function exportImage() {
+   async function exportImage() {
     setError(null);
     if (!ref.current) return;
     setBusy(true);
@@ -45,6 +45,11 @@ export function ShareCard(props: { data: ShareData }) {
         backgroundColor: "#ffffff",
         scale: 2,
         useCORS: true,
+        ignoreElements: (el) => {
+          // Ignore elements with data-html2canvas-ignore or their ancestors
+          return el.hasAttribute('data-html2canvas-ignore') || !!el.closest('[data-html2canvas-ignore]');
+        },
+        logging: false,
       });
       const url = canvas.toDataURL("image/png");
       const a = document.createElement("a");
@@ -61,7 +66,7 @@ export function ShareCard(props: { data: ShareData }) {
   const { data } = props;
 
   return (
-    <div className="rounded-[2rem] border border-black/15 bg-white/70 backdrop-blur-md p-5 shadow-sm">
+    <div className="rounded-[2rem] border-[1px] border-[rgba(0,0,0,0.15)] bg-white/70 backdrop-blur-sm p-5 shadow-sm">
       <div className="flex items-center justify-between gap-3">
         <div>
           <div className="text-sm font-semibold tracking-wide text-black">
@@ -90,7 +95,7 @@ export function ShareCard(props: { data: ShareData }) {
       <div className="mt-4 flex justify-center">
         <div
           ref={ref}
-          className="w-[720px] max-w-full overflow-hidden rounded-[2rem] border border-black/10 bg-white/90 backdrop-blur-md p-6 shadow-lg"
+          className="w-[720px] max-w-full overflow-hidden rounded-[2rem] border-[1px] border-[rgba(0,0,0,0.1)] bg-white/90 backdrop-blur-md p-6 shadow-lg"
           style={{
             color: exportColors.text,
             backgroundImage: `linear-gradient(135deg, ${exportColors.bgTopLeft}, ${exportColors.bgMid}, ${exportColors.bgBottomRight})`,

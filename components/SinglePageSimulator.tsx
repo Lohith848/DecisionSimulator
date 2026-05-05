@@ -124,8 +124,11 @@ export function SinglePageSimulator() {
 
   return (
     <div className="min-h-dvh bg-[#0038FF] text-white relative overflow-hidden selection:bg-[#CCFF00] selection:text-black">
-      {/* Background Grid */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff18_1px,transparent_1px),linear-gradient(to_bottom,#ffffff18_1px,transparent_1px)] bg-[size:4rem_4rem] pointer-events-none z-0" />
+      {/* Background Grid - ignore for html2canvas */}
+      <div
+        className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff18_1px,transparent_1px),linear-gradient(to_bottom,#ffffff18_1px,transparent_1px)] bg-[size:4rem_4rem] pointer-events-none z-0"
+        data-html2canvas-ignore
+      />
 
        {/* Top bar */}
       <header className="relative z-10 max-w-6xl mx-auto px-3 sm:px-6 py-3 sm:py-6 flex items-center justify-between gap-2 sm:gap-4">
@@ -170,8 +173,8 @@ export function SinglePageSimulator() {
             YOUR FUTURE
           </h2>
 
-          {/* Decorative Background Arrows */}
-          <div className="absolute inset-0 pointer-events-none overflow-hidden">
+          {/* Decorative Background Arrows - ignore for html2canvas */}
+          <div className="absolute inset-0 pointer-events-none overflow-hidden" data-html2canvas-ignore>
             {/* Bottom Left Arrow */}
             <div className="absolute bottom-[0%] left-[0%] w-24 h-24 md:w-32 md:h-32 opacity-60">
               <ArrowGreenLeft />
