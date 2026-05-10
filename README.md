@@ -123,7 +123,7 @@ Simulates a decision using AI.
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 app/
@@ -153,7 +153,7 @@ lib/
 
 ---
 
-## 🎨 Design System
+## Design System
 
 ### Colors
 - **Primary Blue**: `#0038FF` (background)
@@ -167,7 +167,7 @@ lib/
 
 ---
 
-## ⚙️ Configuration
+## Configuration
 
 ### Prompt Engineering
 
@@ -184,7 +184,7 @@ In-memory per-IP rate limit is 10 requests per 60 seconds (configurable in `app/
 
 ---
 
-## 🧪 Testing
+## Testing
 
 ```bash
 # Type check (if script exists)
@@ -199,17 +199,17 @@ npm run build
 
 ---
 
-## 📄 License
+## License
 
 MIT — feel free to fork, modify, and deploy.
 
 ---
 
-## 🙏 Credits
+## Credits
 
 Built with Next.js, Tailwind CSS, Framer Motion, Groq, and Google Gemini.
 
-## 🔗 Links
+## Links
 
 - [Check out](https://use-decision-simulator.vercel.app/)
 - [Issues](https://github.com/Lohith848/DecisionSimulator/issues)
