@@ -218,3 +218,6 @@ Built with Next.js, Tailwind CSS, Framer Motion, Groq, and Google Gemini.
 ---
 
 > "Simulating timelines (please don't blink)..." — The Decision Simulator
+
+---
+Random ideas by Lohith 🌻
